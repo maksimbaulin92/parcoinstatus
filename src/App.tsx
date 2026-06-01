@@ -15,6 +15,7 @@ const App = () => {
       <Route path="/pet" element={<PetCard />} />
       <Route path="/event" element={<EventCard />} />
       <Route path="*" element={<div>Not found</div>} />
+      {/* <div></div> */}
     </Routes>
   );
 };
