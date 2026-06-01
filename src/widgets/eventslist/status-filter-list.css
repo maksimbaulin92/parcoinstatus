@@ -1,0 +1,36 @@
+.status-filter {
+  display: flex;
+  background: #f0f1f3;
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+  margin-bottom: 12px;
+}
+
+.status-filter__btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8e9aaf;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    box-shadow 0.15s;
+  white-space: nowrap;
+}
+
+.status-filter__btn:hover {
+  color: #495057;
+}
+
+.status-filter__btn--active {
+  background: #ffffff;
+  color: #1a1a2e;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}

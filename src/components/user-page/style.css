@@ -1,0 +1,254 @@
+.user-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 14px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.user-card__header-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.2px;
+}
+
+.user-card__back-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #e8eaed;
+  background: #f8f9fa;
+  color: #495057;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.user-card__back-btn:hover:not(:disabled) {
+  background: #f0f1f3;
+  border-color: #d0d3d8;
+}
+
+.user-card__back-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.user-card__edit-btn {
+  border: 1px solid #c5cae9;
+  background: #ede7f6;
+  color: #3949ab;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.user-card__edit-btn:hover {
+  background: #e8eaf6;
+  border-color: #9fa8da;
+  color: #283593;
+}
+
+.user-card__edit-btn--cancel {
+  border-color: #e8eaed;
+  background: #f8f9fa;
+  color: #495057;
+}
+
+.user-card__edit-btn--cancel:hover {
+  background: #f0f1f3;
+  border-color: #d0d3d8;
+  color: #212529;
+}
+
+/* Avatar block */
+.user-card__avatar-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.user-card__avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.user-card__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e8eaed;
+}
+
+.user-card__avatar-edit-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1a1a2e;
+  border: none;
+  color: #fff;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.user-card__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.user-card__login {
+  font-size: 12px;
+  color: #8e9aaf;
+  margin-top: 2px;
+}
+
+/* Section */
+.user-card__section {
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.user-card__section-header {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #8e9aaf;
+  padding: 10px 16px 8px;
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.user-card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 16px;
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.user-card__row:last-child {
+  border-bottom: none;
+}
+
+.user-card__row-label {
+  font-size: 13px;
+  color: #8e9aaf;
+}
+
+.user-card__row-value {
+  font-size: 13px;
+  color: #1a1a2e;
+  font-weight: 500;
+}
+
+/* Edit form */
+.user-card__form {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-card__form-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #8e9aaf;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 4px;
+}
+
+.user-card__form-input {
+  width: 100%;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #1a1a2e;
+  background: #f8f9fa;
+  outline: none;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.user-card__form-input:focus {
+  border-color: #9fa8da;
+  background: #ffffff;
+}
+
+.user-card__save-btn {
+  border: none;
+  background: #3949ab;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.user-card__save-btn:hover {
+  background: #283593;
+}
+
+/* Actions */
+.user-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.user-card__action-btn {
+  border: 1px solid #c5cae9;
+  background: #ede7f6;
+  color: #3949ab;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.user-card__action-btn:hover {
+  background: #e8eaf6;
+  border-color: #9fa8da;
+}
+
+.user-card__action-btn--danger {
+  border-color: #ffcdd2;
+  background: #fff8f8;
+  color: #e63946;
+}
+
+.user-card__action-btn--danger:hover {
+  background: #ffebee;
+  border-color: #e57373;
+}

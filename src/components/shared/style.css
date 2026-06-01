@@ -1,0 +1,32 @@
+.add-button {
+  border: 1px solid #c5cae9;
+  background: #e7f2f6;
+  color: #398bab;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+
+.add-button:hover {
+  background: #e8eaf6;
+  border-color: #9fa8da;
+  color: #283593;
+}
+
+.settings-button {
+  border: 1px solid #c5cae9;
+  background: #e7f2f6;
+  color: #398bab;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 5px 12px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.settings-button:hover {
+  background: #e8eaf6;
+  border-color: #9fa8da;
+  color: #283593;
+}

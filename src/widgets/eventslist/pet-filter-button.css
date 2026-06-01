@@ -1,0 +1,43 @@
+.pet-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px 5px 6px;
+  border-radius: 999px;
+  border: 1px solid #e8eaed;
+  background: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  color: #495057;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    color 0.15s;
+}
+
+.pet-filter-btn:hover {
+  border-color: #c5cae9;
+  background: #f5f6ff;
+  color: #1a1a2e;
+}
+
+.pet-filter-btn--active {
+  border-color: #5c6bc0;
+  background: #ede7f6;
+  color: #3949ab;
+}
+
+.pet-filter-btn--active:hover {
+  border-color: #3949ab;
+  background: #e8eaf6;
+}
+
+.pet-filter-btn__avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #e0e0e0;
+}

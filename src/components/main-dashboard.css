@@ -1,0 +1,84 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.app-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-header__logo-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.app-header__logo-text {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.3px;
+}
+
+.app-header__logo-text span {
+  color: #5c6bc0;
+}
+
+.app-header__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e8eaed;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.app-header__avatar:hover {
+  border-color: #5c6bc0;
+}
+
+.menu-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #e8eaed;
+  background: #f8f9fa;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 6px;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.menu-button:hover {
+  background: #f0f1f3;
+  border-color: #d0d3d8;
+}
+
+.menu-button__line {
+  width: 18px;
+  height: 2px;
+  background: #495057;
+  border-radius: 2px;
+  transition: width 0.2s;
+}
+
+.menu-button__line:nth-child(2) {
+  width: 12px;
+  align-self: flex-start;
+}
+
+.menu-button:hover .menu-button__line:nth-child(2) {
+  width: 18px;
+}
