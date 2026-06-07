@@ -1,31 +1,14 @@
 import { eventTypeConfig, mockPets } from '../../lib/data';
 import { formatDate, isUpcoming } from '../../lib/helpers';
 import type { PetEvent } from '../../lib/types';
-import './event-style.css';
+import './style.css';
 
-interface EventProps {
+interface PetEventListItemProps {
   event: PetEvent;
   isLast: boolean;
 }
 
-const getEventTitle = (event: PetEvent): string => {
-  switch (event.type) {
-    case 'vet':
-      return event.notes || 'Приём ветеринара';
-    case 'vaccination':
-      return event.vaccineName;
-    case 'medication':
-      return event.medicationName;
-    case 'grooming':
-      return event.salon || 'Груминг';
-    case 'purchase':
-      return event.itemName;
-    case 'note':
-      return event.notes || 'Заметка';
-  }
-};
-
-export const PetEventComponent = ({ event, isLast }: EventProps) => {
+export const PetEventListItem = ({ event, isLast }: PetEventListItemProps) => {
   const cfg = eventTypeConfig[event.type];
   const upcoming = isUpcoming(event.date) && event.status === 'planned';
   const pet = mockPets.find((p) => p.id === event.petId);
@@ -64,4 +47,21 @@ export const PetEventComponent = ({ event, isLast }: EventProps) => {
       </div>
     </div>
   );
+};
+
+const getEventTitle = (event: PetEvent): string => {
+  switch (event.type) {
+    case 'vet':
+      return event.notes || 'Приём ветеринара';
+    case 'vaccination':
+      return event.vaccineName;
+    case 'medication':
+      return event.medicationName;
+    case 'grooming':
+      return event.salon || 'Груминг';
+    case 'purchase':
+      return event.itemName;
+    case 'note':
+      return event.notes || 'Заметка';
+  }
 };

@@ -4,6 +4,7 @@ import { genderLabels, mockPet, petTypeLabels } from '../../lib/data';
 import { calcAge } from '../../lib/helpers';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
+import { Button } from '../../shared/button/button';
 
 export const PetCard = () => {
   const navigate = useNavigate();
@@ -50,18 +51,20 @@ export const PetCard = () => {
       {/* Header */}
       <div className="pet-card__header">
         <div className="pet-card__header-left">
-          <button disabled={isEditing} onClick={() => navigate('/')} className="pet-card__back-btn">
-            ← Назад
-          </button>
+          <Button
+            disabled={isEditing}
+            color={isEditing ? 'secondary' : 'primary'}
+            onClick={() => navigate('/')}
+            label="Назад"
+          />
           <span className="pet-card__header-title">{pet.name}</span>
         </div>
         {activeTab === 'info' && (
-          <button
-            className={`pet-card__edit-btn ${isEditing ? 'pet-card__edit-btn--cancel' : ''}`}
+          <Button
+            color={isEditing ? 'secondary' : 'primary'}
             onClick={() => setIsEditing((v) => !v)}
-          >
-            {isEditing ? 'Отмена' : 'Изменить'}
-          </button>
+            label={isEditing ? 'Отмена' : 'Изменить'}
+          />
         )}
       </div>
 
@@ -83,11 +86,7 @@ export const PetCard = () => {
               <span className="pet-card__badge">
                 {lastWeight.value} кг
                 {weightDiff && (
-                  <span
-                    className={
-                      parseFloat(weightDiff) > 0 ? 'pet-card__badge--alert' : 'pet-card__badge--ok'
-                    }
-                  >
+                  <span className={parseFloat(weightDiff) > 0 ? 'text-danger' : 'text-success'}>
                     {' '}
                     {parseFloat(weightDiff) > 0 ? '+' : ''}
                     {weightDiff}
@@ -204,17 +203,13 @@ export const PetCard = () => {
                 <span className="pet-card__row-label">{entry.date}</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   {diff && (
-                    <span
-                      className={
-                        parseFloat(diff) > 0
-                          ? 'pet-card__weight-diff--up'
-                          : 'pet-card__weight-diff--down'
-                      }
-                    >
-                      {parseFloat(diff) > 0 ? '▲' : '▼'} {Math.abs(parseFloat(diff))}
+                    <span className={parseFloat(diff) > 0 ? 'text-danger' : 'text-success'}>
+                      {parseFloat(diff) > 0 ? '+' : '-'} {Math.abs(parseFloat(diff))}
                     </span>
                   )}
-                  <span className="pet-card__row-value">{entry.value} кг</span>
+                  <span style={{ minWidth: '50px' }} className="fw-semibold text-end">
+                    {entry.value} кг
+                  </span>
                 </div>
               </div>
             );

@@ -1,11 +1,12 @@
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import type { User } from '../../lib/types';
 import { mockEvents, mockPets } from '../../lib/data';
 import { isUpcoming } from '../../lib/helpers';
 import './style.css';
+//import { Button } from '../../shared/button/button';
 
 export const UserWidget = ({ user }: { user: User }) => {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const planned = mockEvents.filter((e) => e.status === 'planned').length;
   const upcoming = mockEvents.filter((e) => e.status === 'planned' && isUpcoming(e.date)).length;
@@ -24,9 +25,7 @@ export const UserWidget = ({ user }: { user: User }) => {
           </div>
           <div className="user-widget__email text-truncate">{user.email}</div>
         </div>
-        <button onClick={() => navigate('/user')} className="user-widget__settings-btn">
-          Настройки
-        </button>
+        {/* <Button onClick={() => navigate('/user')} label="Настройки" color="secondary" /> */}
       </div>
 
       {/* Stats */}

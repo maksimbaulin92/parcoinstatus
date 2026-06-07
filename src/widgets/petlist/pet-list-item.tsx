@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import type { Pet } from '../../lib/types';
 import { petTypeIcon } from '../../lib/data';
 import { calcAge } from '../../lib/helpers';
-import './pet-list-widget.css';
+import './style.css';
 
 interface PetWidgetProps {
   pet: Pet;

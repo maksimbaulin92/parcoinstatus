@@ -2,9 +2,11 @@ import { useState } from 'react';
 import type { PetEvent } from '../../lib/types';
 import { formatDate } from '../../lib/helpers';
 import { mockEvents, purchaseCategoryLabels, typeConfig } from '../../lib/data';
-import { SettingsDropdown } from './../shared/dropdown';
+
 import { useNavigate } from 'react-router-dom';
 import './style.css';
+//import { SettingsDropdown } from '../../shared/dropdown';
+import { Button } from '../../shared/button/button';
 
 const EventDetail = ({ event }: { event: PetEvent }) => {
   switch (event.type) {
@@ -121,15 +123,13 @@ export const EventCard = () => {
       {/* Header */}
       <div className="event-card__header">
         <div className="event-card__header-left">
-          <button className="event-card__back-btn" onClick={() => navigate('/')}>
-            ← Назад
-          </button>
+          <Button label="Назад" color="secondary" onClick={() => navigate('/')} />
           <span className="event-card__header-title">Событие</span>
         </div>
-        <SettingsDropdown label="Настройки">
-          <button className="btn btn-sm w-100 text-start px-3 py-2">Редактировать</button>
-          <button className="btn btn-sm w-100 text-start px-3 py-2 text-danger">Удалить</button>
-        </SettingsDropdown>
+        {/* <SettingsDropdown label="Настройки">
+          <Button label="Редактировать" color="primary" />
+          <Button label="Назад" color="secondary" />
+        </SettingsDropdown> */}
       </div>
 
       {/* Demo switcher */}

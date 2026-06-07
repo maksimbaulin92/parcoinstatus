@@ -1,5 +1,5 @@
-import type { StatusType } from './event-list-widget';
-import './status-filter-list.css';
+import type { StatusType } from '../event-list-widget';
+import './style.css';
 
 interface StatusFilterProps {
   filter: StatusType;
@@ -12,7 +12,7 @@ const labels: Record<StatusType, string> = {
   done: 'Выполненные',
 };
 
-export const StatusFilter = ({ filter, setFilter }: StatusFilterProps) => {
+export const StatusFilterList = ({ filter, setFilter }: StatusFilterProps) => {
   return (
     <div className="status-filter">
       {(['all', 'planned', 'done'] as const).map((f) => (

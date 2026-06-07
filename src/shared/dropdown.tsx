@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { DropDownButton } from './dropdown-button';
+import { Button } from './button/button';
 
 interface SettingsDropdownProps {
   children: ReactNode;
@@ -25,7 +25,7 @@ export const SettingsDropdown = ({ children, label = 'Настройки' }: Set
 
       {/* Component */}
       <div className="position-relative" style={{ display: 'inline-block' }}>
-        <DropDownButton label={label} onClick={() => setOpen((prev) => !prev)} />
+        <Button label={label} onClick={() => setOpen((prev) => !prev)} color="primary" />
 
         {open && (
           <div

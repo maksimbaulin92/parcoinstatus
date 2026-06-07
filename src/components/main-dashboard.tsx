@@ -7,7 +7,7 @@ import './main-dashboard.css';
 export const MainDashboard = () => {
   return (
     <div className="container" style={{ maxWidth: 430 }}>
-      <div className="app-header">
+      {/* <div className="app-header">
         <div className="app-header__logo">
           <span className="app-header__logo-icon">🐾</span>
           <span className="app-header__logo-text">
@@ -15,9 +15,9 @@ export const MainDashboard = () => {
           </span>
         </div>
         <MenuButton />
-      </div>
+      </div> */}
 
-      <div className="d-flex flex-column">
+      <div className="d-flex flex-column mt-3">
         <UserWidget user={mockUser} />
         <PetsList pets={mockPets} />
         <EventsList events={mockEvents} />
