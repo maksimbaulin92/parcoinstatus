@@ -1,6 +1,6 @@
-export const API_BASE = "https://localhost:7000";
+export const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
-const defaultInit: RequestInit = { credentials: "include" };
+const defaultInit: RequestInit = {};
 
 export async function api<T>(
   path: string,
@@ -18,7 +18,7 @@ export async function api<T>(
 
   // единообразные ошибки
   if (!res.ok) {
-    const text = await res.text().catch(() => "");
+    const text = await res.text().catch(() => '');
     throw new Error(text || `${res.status} ${res.statusText}`);
   }
 
@@ -28,33 +28,3 @@ export async function api<T>(
 
   return (await res.json()) as T;
 }
-
-//POST FILE
-export const postFile = async <TRes>(
-  path: string,
-  formData: FormData,
-  init?: RequestInit
-): Promise<TRes> => {
-  return api<TRes>(path, {
-    method: "POST",
-    body: formData,
-    parseText: true,
-    ...init,
-  });
-};
-
-// POST
-export const post = <TReq, TRes>(
-  path: string,
-  body: TReq,
-  init?: RequestInit
-) =>
-  api<TRes>(path, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...(init?.headers ?? {}),
-    },
-    body: JSON.stringify(body),
-    ...init,
-  });

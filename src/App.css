@@ -1,0 +1,41 @@
+.dcol {
+  display: flex;
+  flex-direction: column;
+}
+
+.drow {
+  display: flex;
+  flex-direction: row;
+}
+
+.js {
+  justify-content: start;
+}
+
+.jc {
+  justify-content: center;
+}
+
+.je {
+  justify-content: end;
+}
+
+.jb {
+  justify-content: space-between;
+}
+
+.as {
+  align-items: start;
+}
+
+.ac {
+  align-items: center;
+}
+
+.ae {
+  align-items: end;
+}
+
+.astr {
+  align-items: stretch;
+}

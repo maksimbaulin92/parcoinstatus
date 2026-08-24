@@ -3,28 +3,28 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-  base: '/my-pets-app/', // имя твоего репозитория на GitHub
+  base: '/parcoinstatus/', // имя твоего репозитория на GitHub
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'My pets',
-        short_name: 'My pets',
-        description: 'My pets',
+        name: 'Parcoin status',
+        short_name: 'Parcoin status',
+        description: 'Parcoin status panel',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
-        start_url: '/my-pets-app/',
-        scope: '/my-pets-app/',
+        start_url: '/parcoinstatus/',
+        scope: '/parcoinstatus/',
         icons: [
           {
-            src: '/my-pets-app/icons/icon-192x192.png',
+            src: '/parcoinstatus/icons/icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/my-pets-app/icons/icon-512x512.png',
+            src: '/parcoinstatus/icons/icon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
           },
