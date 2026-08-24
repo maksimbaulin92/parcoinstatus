@@ -21,7 +21,7 @@ export const MainDashboard = () => {
     setIsFirst(false);
   };
   return (
-    <div className="p-3 dcol gap-3 as js ">
+    <div className="p-3 dcol gap-3 as js col-12 col-md-8 col-lg-6 container">
       <span className="fw-semibold fs-4">Parcoin</span>
       <div className="dcol gap-3 js astr bg-light border rounded-4 p-3 w-100">
         <span className="text-secondary">Статус сервисов</span>
