@@ -7,7 +7,7 @@ on:
 permissions:
   contents: read
   pages: write
-  id-token: write # ← это исправит ошибку с токеном
+  id-token: write
 
 jobs:
   deploy:
@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22 # ← обновил с 20 на 22
+          node-version: 22
       - run: npm install
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
