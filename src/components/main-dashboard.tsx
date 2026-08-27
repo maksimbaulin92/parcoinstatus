@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useStatusQuery } from '../api/use-status-query';
+import { ApiError } from '../api/api';
+import { getTime } from '../helpers';
 
 export const MainDashboard = () => {
   const [errorText, setErrorText] = useState<string | null>(null);
@@ -8,76 +10,80 @@ export const MainDashboard = () => {
 
   const { data: apiStatus, isLoading: isStatusLoading, isRefetching, refetch } = useStatusQuery();
 
-  const isLoading = isStatusLoading || isRefetching;
-
   const handleCheck = async () => {
     setErrorText(null);
     const result = await refetch();
 
     if (result.isError) {
-      setErrorText('Основной сервер недоступен');
+      const error = result.error;
+      if (error instanceof ApiError) {
+        if (error.status === 429) {
+          setErrorText('Слишком много запросов подряд, подождите 1 минуту');
+        } else if (error.status >= 500) {
+          setErrorText('Сервер вернул ошибку, попробуйте позже');
+        } else {
+          setErrorText(`Ошибка запроса: ${error.status}`);
+        }
+      } else {
+        // fetch вообще не смог достучаться — сеть, CORS, сервер лежит
+        setErrorText('Основной сервер недоступен');
+      }
     }
+
     setLastCheckTime(new Date());
     setIsFirst(false);
   };
+
+  const isLoading = isStatusLoading || isRefetching;
+
   return (
-    <div className="p-3 dcol gap-3 as js col-12 col-md-8 col-lg-6 container">
-      <span className="fw-semibold fs-4">Parcoin</span>
+    <div className="p-3 dcol gap-3 as js col-12 col-sm-8 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+      <span className="fs-1">Parcoin App</span>
       <div className="dcol gap-3 js astr bg-light border rounded-4 p-3 w-100">
-        <span className="text-secondary">Статус сервисов</span>
-
-        <div className="dcol gap-3 js astr">
-          {!isLoading && errorText && <div className="alert alert-danger m-0">{errorText}</div>}
-
-          {!errorText && (
-            <>
-              <Service
-                label="RPS"
-                description="Парковка Заводская"
-                isOnline={apiStatus?.rps ?? false}
-                isLoading={isLoading}
-                isFirst={isFirst}
-              />
-              <Service
-                label="Ecopark"
-                description="Парковка Аэропорт"
-                isOnline={apiStatus?.ecopark ?? false}
-                isLoading={isLoading}
-                isFirst={isFirst}
-              />
-              <Service
-                label="CleverPark"
-                description="Парковка Квант"
-                isOnline={apiStatus?.cleverPark ?? false}
-                isLoading={isLoading}
-                isFirst={isFirst}
-              />
-              <Service
-                label="Юкасса"
-                description="Платежный шлюз"
-                isOnline={apiStatus?.yookassa ?? false}
-                isLoading={isLoading}
-                isFirst={isFirst}
-              />
-              <Service
-                label="База данных"
-                description="Внутренняя инфраструктура"
-                isOnline={apiStatus?.db ?? false}
-                isLoading={isLoading}
-                isFirst={isFirst}
-              />
-            </>
-          )}
+        <div className="drow jb ac text-secondary">
+          <span>Статус сервисов</span>
+          {lastCheckTime && <span>обновлено {getTime(lastCheckTime)}</span>}
         </div>
 
-        {lastCheckTime && (
-          <span style={{ fontSize: '12px' }}>
-            Последняя проверка{' '}
-            {lastCheckTime.toLocaleTimeString('ru-RU', {
-              hour: '2-digit',
-              minute: '2-digit',
-            })}
-          </span>
+        {!isLoading && errorText && <div className="alert alert-danger m-0">{errorText}</div>}
+        {!errorText && (
+          <div className="dcol gap-3 js astr">
+            <Service
+              label="RPS"
+              description="Парковка Заводская"
+              isOnline={apiStatus?.rps ?? false}
+              isLoading={isLoading}
+              isFirst={isFirst}
+            />
+            <Service
+              label="Ecopark"
+              description="Парковка Аэропорт"
+              isOnline={apiStatus?.ecopark ?? false}
+              isLoading={isLoading}
+              isFirst={isFirst}
+            />
+            <Service
+              label="CleverPark"
+              description="Парковка Квант"
+              isOnline={apiStatus?.cleverPark ?? false}
+              isLoading={isLoading}
+              isFirst={isFirst}
+            />
+            <Service
+              label="Юкасса"
+              description="Платежный шлюз"
+              isOnline={apiStatus?.yookassa ?? false}
+              isLoading={isLoading}
+              isFirst={isFirst}
+            />
+            <Service
+              label="База данных"
+              description="Внутренняя инфраструктура"
+              isOnline={apiStatus?.db ?? false}
+              isLoading={isLoading}
+              isFirst={isFirst}
+            />
+          </div>
         )}
         <button
           onClick={(e) => {
@@ -86,9 +92,9 @@ export const MainDashboard = () => {
             handleCheck();
           }}
           disabled={isLoading}
-          className="btn btn-success px-4 rounded-4"
+          className={`btn btn-primary rounded-3 px-4 w-50 align-self-end`}
         >
-          {isLoading ? 'Обновляем...' : 'Обновить'}
+          {isLoading ? 'Обновляем' : 'Обновить'}
         </button>
       </div>
     </div>

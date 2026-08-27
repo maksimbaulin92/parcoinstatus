@@ -2,6 +2,15 @@ export const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 const defaultInit: RequestInit = {};
 
+export class ApiError extends Error {
+  status: number;
+  constructor(status: number, message: string) {
+    super(message);
+    this.name = 'ApiError';
+    this.status = status;
+  }
+}
+
 export async function api<T>(
   path: string,
   init?: RequestInit & { parseText?: boolean },
@@ -19,7 +28,7 @@ export async function api<T>(
   // единообразные ошибки
   if (!res.ok) {
     const text = await res.text().catch(() => '');
-    throw new Error(text || `${res.status} ${res.statusText}`);
+    throw new ApiError(res.status, text || `${res.status} ${res.statusText}`);
   }
 
   if (init?.parseText) {

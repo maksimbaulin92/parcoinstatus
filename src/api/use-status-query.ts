@@ -19,5 +19,6 @@ export const useStatusQuery = () => {
     staleTime: 0,
     gcTime: 0,
     refetchOnWindowFocus: false,
+    retry: false,
   });
 };

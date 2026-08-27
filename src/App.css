@@ -39,3 +39,7 @@
 .astr {
   align-items: stretch;
 }
+
+#root {
+  height: 100dvh;
+}
