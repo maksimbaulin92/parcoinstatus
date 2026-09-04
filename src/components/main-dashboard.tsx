@@ -114,8 +114,13 @@ const Service = ({ label, description, isOnline, isLoading, isFirst }: ServicePr
   const inActive = 'rgb(255, 85, 85)';
   const spinner = 'rgb(192, 192, 192)';
 
+  const isSecondary = isLoading || isFirst;
+  const isSuccess = !isLoading && !isFirst && isOnline;
+
   return (
-    <div className="drow jb ac bg-white border rounded-3 px-3 py-2 gap-5">
+    <div
+      className={`drow jb ac alert  ${isSecondary ? 'alert-secondary' : isSuccess ? 'alert-success' : 'alert-danger'} rounded-3 px-3 py-2 gap-5`}
+    >
       <div className="dcol js as">
         <span style={{ fontSize: '18px' }}>{label}</span>
         <span style={{ fontSize: '14px' }} className="text-secondary">

@@ -15,7 +15,7 @@ export const useStatusQuery = () => {
   return useQuery({
     queryKey: [StatusQueryKey],
     queryFn: () => api<ApiStatusResponse>(`/status`),
-    enabled: true,
+    enabled: false,
     staleTime: 0,
     gcTime: 0,
     refetchOnWindowFocus: false,
