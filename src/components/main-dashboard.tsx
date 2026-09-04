@@ -47,7 +47,7 @@ export const MainDashboard = () => {
 
         {!isLoading && errorText && <div className="alert alert-danger m-0">{errorText}</div>}
         {!errorText && (
-          <div className="dcol gap-3 js astr">
+          <div className="dcol js astr">
             <Service
               label="RPS"
               description="Парковка Заводская"
