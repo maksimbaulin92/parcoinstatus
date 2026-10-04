@@ -1,4 +1,8 @@
+import { useAdminStore } from '../store/admin-store';
+
 export const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
+export const ADMIN_PASSWORD_HEADER = 'X-Admin-Password';
 
 const defaultInit: RequestInit = {};
 
@@ -16,9 +20,17 @@ export async function api<T>(
   init?: RequestInit & { parseText?: boolean },
   signal?: AbortSignal
 ): Promise<T> {
+  // админский пароль уходит с каждым запросом, если введён
+  const headers = new Headers(init?.headers);
+  const adminPassword = useAdminStore.getState().adminPassword;
+  if (adminPassword) {
+    headers.set(ADMIN_PASSWORD_HEADER, adminPassword);
+  }
+
   const res = await fetch(`${API_BASE}${path}`, {
     ...defaultInit,
     ...init,
+    headers,
     signal: signal ?? null,
   });
 
